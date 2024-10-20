@@ -1,0 +1,119 @@
+.logout{
+    border-radius: 20px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #000;
+    color: #797979;
+    font-weight: 400;
+    transition: .2s;
+}
+
+.logout:hover{
+    cursor: pointer;
+    background-color: #2c2c2c;
+    color: #fff;
+}
+.voltar{
+    background-color: #aec200;
+}
+.voltar:hover{
+    background-color: #6e8117;
+}
+
+.produtos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.prod{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 15px;
+}
+.editar{
+    background-color: #FFC857;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px;
+    margin: 8px 0px;
+    border-radius: 15px;
+    transition: .2s;
+}
+.editar:hover{
+    background-color: #FFDD99;
+    text-decoration: none;
+    color: #000;
+}
+.excluir{
+    background-color: #DB3A34;
+    color: #000;
+    font-weight: 700;
+    border: none;
+    padding: 5px;
+    margin: 15px 0px;
+    border-radius: 15px;
+    transition: .2s;
+    cursor: pointer;
+}
+.excluir:hover{
+    cursor: pointer;
+    background-color: #E77874;
+    
+}
+.criar{
+    background-color: #499F68;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px;
+    margin: 8px 0px;
+    border-radius: 15px;
+    transition: .2s;
+}
+.criar:hover{
+    background-color: #9DD2B1;
+    text-decoration: none;
+    color: #000;
+}
+
+
+.formulario{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    }
+.inputs{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 15px;
+    width: 85%;
+    max-width: 670px;
+    }
+.titulos{
+    font-weight: 700;
+    text-align: center;
+}
+.salvar{
+    background-color: #499F68;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 5px;
+    margin: 8px 0px;
+    border-radius: 15px;
+    transition: .2s;
+    width: 100px;
+    cursor: pointer;
+    border: none;
+}
+.salvar:hover{
+    background-color: #9DD2B1;
+}
+
