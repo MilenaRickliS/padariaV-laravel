@@ -93,7 +93,7 @@
     margin: 5px;
     padding: 5px;
     border-radius: 15px;
-    width: 85%;
+    width: 100%;
     max-width: 670px;
     }
 .titulos{
@@ -117,3 +117,25 @@
     background-color: #9DD2B1;
 }
 
+.card{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+}
+.card-header{
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    width: 100%;
+    font-weight: bold;
+}
+.link-login{
+    color: #000;
+    font-weight: 700;
+}
+.link-login:hover{
+    font-weight: bold;
+    color: #000;
+}
