@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -47,11 +48,19 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
-
+    
         if (Auth::attempt($credentials)) {
-            return redirect()->intended($this->redirectTo);
+            // Adicione um log para verificar o e-mail do usuário
+            Log::info('Usuário autenticado: ' . Auth::user()->email);
+    
+            // Verifica se o usuário é administrador
+            if (Auth::user()->email === 'admin@example.com') {
+                return redirect()->intended('/products'); // Redireciona para /products se for admin
+            }
+    
+            return redirect()->intended($this->redirectTo); // Redireciona para /cart/checkout se não for admin
         }
-
+    
         return redirect()->back()->withErrors(['email' => 'Email ou senha inválidos']);
     }
 
