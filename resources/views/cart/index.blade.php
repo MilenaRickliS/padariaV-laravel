@@ -1,6 +1,6 @@
 <h1>Carrinho de Compras</h1>
 
-@if (Session::has('cart'))
+@if (Session::has('cart') && count(Session::get('cart')) > 0)
     <table>
         <thead>
             <tr>
