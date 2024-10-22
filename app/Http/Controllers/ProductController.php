@@ -75,4 +75,10 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+
+    public function cardapio(){
+
+        $products = Product::all();
+        return view('products.cardapio', compact('products'));
+    }
 }
