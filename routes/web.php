@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Auth;
 
 // Rotas de autenticação
@@ -38,5 +39,7 @@ Route::get('/cart/remove/{id}', [CartController::class, 'remove']);
 
 // Rotas para usuários normais
 Route::middleware(['auth'])->group(function () {
-    Route::get('/cart/checkout', [CartController::class, 'checkout']);
+    Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index');
+    Route::post('/pedidos', [PedidoController::class, 'pedidos'])->name('pedidos.store'); // Adicione esta linha
 });

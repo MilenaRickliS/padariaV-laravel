@@ -33,7 +33,7 @@
         $product = App\Models\Product::find($id);
         return $product ? $product->price * Session::get('cart')[$id] : 0; // Verifica se o produto existe
     }, array_keys(Session::get('cart')))), 2, ',', '.') }}</p>
-        <form action="{{ url('/order') }}" method="POST">
+        <form action="{{ url('/pedidos') }}" method="POST">
             @csrf
             <button type="submit">Finalizar Compra</button>
         </form>
