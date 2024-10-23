@@ -11,7 +11,16 @@
     @endif
     <ul>
         @foreach($pedidos as $pedido)
-            <li>Pedido ID:{{$pedido->id }} - Valor: R$ {{$pedido->valor}}</li>
+            <li>
+                Pedido ID:{{$pedido->id }} - Valor: R$ {{$pedido->valor}}
+                <ul>
+                    @foreach($pedido->itens as $item)
+                        <li>
+                            Produto: {{$item->product->name}} - Quantidade: {{$item->quantidade}}
+                        </li>
+                    @endforeach
+                </ul>
+            </li>
         @endforeach
     </ul>
 @endsection
