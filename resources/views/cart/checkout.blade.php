@@ -33,10 +33,40 @@
         $product = App\Models\Product::find($id);
         return $product ? $product->price * Session::get('cart')[$id] : 0; // Verifica se o produto existe
     }, array_keys(Session::get('cart')))), 2, ',', '.') }}</p>
-        <form action="{{ url('/pedidos') }}" method="POST">
-            @csrf
-            <button type="submit">Finalizar Compra</button>
-        </form>
+
+    <form action="{{ url('/pedidos') }}" method="POST">
+        @csrf
+        <div>
+            <label for="rua">Rua:</label>
+            <input type="text" name="rua" required>
+        </div>
+        <div>
+            <label for="numero">Número:</label>
+            <input type="text" name="numero" required>
+        </div>
+        <div>
+            <label for="cep">CEP:</label>
+            <input type="text" name="cep" required>
+        </div>
+        <div>
+            <label for="cidade">Cidade:</label>
+            <input type="text" name="cidade" required>
+        </div>
+        <div>
+            <label for="complemento">Complemento:</label>
+            <input type="text" name="complemento">
+        </div>
+        <div>
+            <label for="forma_pagamento">Forma de Pagamento:</label>
+            <select name="forma_pagamento" required>
+                <option value="cartao">Cartão de Crédito</option>
+                <option value="boleto">Boleto</option>
+                <option value="paypal">PayPal</option>
+            </select>
+        </div>
+        <button type="submit">Finalizar Compra</button>
+    </form>
+
     @else
         <p>Carrinho vazio!</p>
     @endif

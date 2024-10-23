@@ -20,6 +20,20 @@
                         </li>
                     @endforeach
                 </ul>
+                <p>Endereço: 
+                    @if($pedido->endereco)
+                        {{$pedido->endereco->rua}}, {{$pedido->endereco->numero}}, {{$pedido->endereco->cidade}} - {{$pedido->endereco->cep}} ({{$pedido->endereco->complemento}})
+                    @else
+                        Endereço não disponível
+                    @endif
+                </p>
+                <p>Forma de Pagamento: 
+                    @if($pedido->endereco)
+                        {{$pedido->endereco->forma_pagamento}}
+                    @else
+                        Informação de pagamento não disponível
+                    @endif
+                </p>
             </li>
         @endforeach
     </ul>

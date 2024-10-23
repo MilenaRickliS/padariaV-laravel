@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pedido;
+use App\Models\Endereco;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
@@ -26,7 +27,7 @@ class PedidoController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $pedidos = Auth::user()->pedidos;
+            $pedidos = Pedido::with('itens.product', 'endereco')->where('user_id', Auth::user()->id)->get();
             return view('pedidos.index', compact('pedidos'));
         } else {
             return redirect()->route('login')->with('error', 'Você precisa estar logado para ver seus pedidos.');
@@ -60,6 +61,17 @@ class PedidoController extends Controller
                 'quantidade' => $quantity
             ]);
         }
+    
+        // Save address information
+        $endereco = new Endereco();
+        $endereco->pedido_id = $pedido->id;
+        $endereco->rua = $request->rua;
+        $endereco->numero = $request->numero;
+        $endereco->cep = $request->cep;
+        $endereco->cidade = $request->cidade;
+        $endereco->complemento = $request->complemento;
+        $endereco->forma_pagamento = $request->forma_pagamento;
+        $endereco->save();
     
         // Clear the cart after saving the order
         FacadesSession::forget('cart');

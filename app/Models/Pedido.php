@@ -16,4 +16,8 @@ class Pedido extends Model
     public function itens(){
         return $this->hasMany(ItemPedido::class);
     }
+    public function endereco()
+    {
+        return $this->hasOne(Endereco::class); // Adicione esta linha
+    }
 }
