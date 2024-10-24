@@ -41,5 +41,5 @@ Route::get('/cart/remove/{id}', [CartController::class, 'remove']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index');
-    Route::post('/pedidos', [PedidoController::class, 'pedidos'])->name('pedidos.store'); // Adicione esta linha
+    Route::post('/pedidos', [PedidoController::class, 'pedidos'])->name('pedidos.store'); 
 });

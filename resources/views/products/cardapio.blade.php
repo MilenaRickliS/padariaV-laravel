@@ -1,26 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Lista de Produtos</h1>
 
-<div class="produtos">
+<h1>Cardápio</h1>
+@if (session('item_added'))
+    <a href="{{ url('/cart') }}" class=" ver shake"><i class="bi bi-cart-fill"></i> Ver Carrinho</a>
+@endif
+<div class="cardapio">
     @foreach ($products as $product)
-        <div class="prod">
+        <div class="p">
+            @if($product->image)
+                <img  class="img" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+            @endif
             <h2>{{ $product->name }}</h2>
             <p>{{ $product->description }}</p>
-            <p>R$ {{ number_format($product->price, 2, ',', '.') }}</p>
-            @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="width: 100px; height:auto;">
-            @endif
-            <form action="{{ url('/cart/add/'.$product->id) }}" method="POST">
-                @csrf
-                <button type="submit">Adicionar ao Carrinho</button>
-            </form>
+            <div class="cardapio-flex">
+                <p class="price">R$ {{ number_format($product->price, 2, ',', '.') }}</p>
+                <form class="form" action="{{ url('/cart/add/'.$product->id) }}" method="POST">
+                    @csrf
+                    <button class="add" type="submit">Adicionar ao Carrinho</button>
+                </form>
+            </div>
         </div>        
     @endforeach
 </div>
 
-@if (session('item_added'))
-    <a href="{{ url('/cart') }}" class="btn btn-primary">Ver Carrinho</a>
-@endif
+
 @endsection
