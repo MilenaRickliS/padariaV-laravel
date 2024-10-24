@@ -42,7 +42,7 @@
             @csrf
             <div>
                 <label for="rua">Rua:</label>
-                <input type="text" name="rua" required placeholder="Avenida">
+                <input type="text" name="rua" required placeholder="Avenida/Rua">
             </div>
             <div>
                 <label for="numero">Número:</label>

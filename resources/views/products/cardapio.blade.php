@@ -18,7 +18,7 @@
                 <p class="price">R$ {{ number_format($product->price, 2, ',', '.') }}</p>
                 <form class="form" action="{{ url('/cart/add/'.$product->id) }}" method="POST">
                     @csrf
-                    <button class="add" type="submit">Adicionar ao Carrinho</button>
+                    <button class="add" type="submit"><i class="bi bi-cart-plus-fill"></i> Adicionar ao Carrinho</button>
                 </form>
             </div>
         </div>        

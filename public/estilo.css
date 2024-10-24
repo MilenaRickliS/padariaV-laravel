@@ -51,6 +51,9 @@ h1{
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
 }
 
 @media (min-width: 768px) {
@@ -67,9 +70,12 @@ h1{
 
 .p {
     border-radius: 30px;
-    border: 1px solid #c59700;
+    border: 3px solid #c59700;
     padding: 15px;
     text-align: center;
+}
+.p:hover{
+    background-color: #ffd13b;
 }
 
 .price{
@@ -230,7 +236,7 @@ th, td{
 .form-finalizar{
     margin: 10px auto;
     padding: 20px;
-    width: 75%;
+    width: 50%;
     text-align: center;
     border-radius: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
