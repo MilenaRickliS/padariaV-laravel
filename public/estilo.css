@@ -1,6 +1,8 @@
-nav{
-    background-color: #FFC857;
-
+body{
+    background-color: black;
+    background-image: url(./pexels-helloaesthe-15692905.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 ul{
@@ -13,7 +15,7 @@ li{
     
 }
 a{
-    color: #000000;
+    color: #ffffff;
     font-weight: bold;
     transition: .5s;
     padding: 10px;
@@ -28,7 +30,8 @@ a:hover{
     display: flex;
 }
 .logout{
-    background-color: #FFC857;
+    
+    /* background-color: #FFC857; */
     color: #000000;
     font-weight: bold;
     transition: .5s;
@@ -36,7 +39,8 @@ a:hover{
     border: none;
 }
 .logout:hover{
-    color: #8f6d00;
+    background-color: #c59700;
+    color: #ffffff;
     text-decoration: none;
     border: solid 2px #8f6d00;
     border-radius: 30px;
@@ -45,12 +49,13 @@ a:hover{
 h1{
     margin: 50px auto;
     text-align: center;
+    color: #fff;
 }
 
 .cardapio {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 10px;
     width: 80%;
     text-align: center;
     margin: 0 auto;
@@ -69,14 +74,14 @@ h1{
 }
 
 .p {
-    border-radius: 30px;
-    border: 3px solid #c59700;
-    padding: 15px;
+    border-radius: 0px;
+    /* border: 3px solid #c59700; */
+    background-color: #fff;
+    padding: 10px;
     text-align: center;
+    
 }
-.p:hover{
-    background-color: #ffd13b;
-}
+
 
 .price{
     margin: 0px 10px;
@@ -140,7 +145,8 @@ h1{
     margin: 0 auto;
     text-align: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    border-radius: 20px;   
+    border-radius: 20px;  
+    background-color: #fff;
 }
 
 th, td{
@@ -188,11 +194,21 @@ th, td{
 
 }
 .final-carrinho{
+    background-color: #fff;
     width: 60%;
     display: flex;
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
+    border-radius:  0px  0px 20px 20px;
+    
+}
+.final-carrinho a{
+    color: #000;
+    
+}
+.final-carrinho a:hover{
+    color: #c59700;
 }
 @media (min-width: 1120px) {
     .final-carrinho {
@@ -200,11 +216,14 @@ th, td{
     }
 }
 .total{
+    background-color: #fff;
+    border-radius: 0px  0px 20px 20px;
     font-weight: bold;
     text-align: center;
     padding: 20px;
     font-size: 20px;
     color: #c59700;
+    
 }
 
 /* finalizar */
@@ -213,13 +232,13 @@ th, td{
 }
 .titulo-finalizar{
     font-weight: bold;
-    color: #030303;
+    color: #ffffff;
     font-size: 30px;
     margin: 10px;
 }
 .titulo-final{
     font-weight: bold;
-    color: #9e9b00;
+    color: #a7a401;
     margin: 10px;
 }
 .final-flex{
@@ -228,12 +247,14 @@ th, td{
     align-items: center;
 }
 .finalizar-carrinho{
+    background-color: #fff;
     margin: 0 auto;
     text-align: center;
     border-radius: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .form-finalizar{
+    background-color: #fff;
     margin: 10px auto;
     padding: 20px;
     width: 50%;
@@ -275,6 +296,7 @@ th, td{
 
 }
 .pedido{
+    background-color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -290,10 +312,40 @@ th, td{
     list-style: circle;
 }
 .entregue{
-    color: #c0f500;
+    color: #394900;
     font-size: 50px;
     
 }
+
+/* footer */
+.footer-flex{
+    display: flex;
+    margin: 200px auto;
+    
+    justify-content: center;
+    align-items: center;
+}
+.footer-info{
+    font-weight: bold;
+    padding: 20px;
+    color: #000000;
+    background-image: url(./fundo-blur\ \(1\).png);
+}
+.footer-flex2{
+    display: flex;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    padding: 50px;
+}
+.bemvindo{
+    font-size: 50px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.footer-flex2 p{
+    font-weight: bold;
+    color: #ffffff;
+}
+
 /* products admin */
 .voltar{
     background-color: #aec200;
@@ -414,8 +466,10 @@ th, td{
 .link-login{
     color: #000;
     font-weight: 700;
+    font-size: 12px;
 }
 .link-login:hover{
     font-weight: bold;
     color: #000;
+    text-decoration: none;
 }
