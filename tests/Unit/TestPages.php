@@ -11,7 +11,7 @@ use App\Models\User;
 
 class TestPages extends TestCase
 {
-    use RefreshDatabase; // Para usar o banco de dados
+    use RefreshDatabase; 
 
     protected $cartController;
 
@@ -25,9 +25,8 @@ class TestPages extends TestCase
     public function it_can_add_item_to_cart()
     {
         $request = new Request();
-        $request->merge(['id' => 7]); // Simulando o ID do produto
+        $request->merge(['id' => 7]); //  ID = 7
 
-        // Simula a sessão
         Session::start();
         $response = $this->cartController->add($request, 7);
 
@@ -40,7 +39,7 @@ class TestPages extends TestCase
     /** @test */
     public function it_can_decrease_item_quantity_in_cart()
     {
-        Session::put('cart', [7 => 2]); // Simulando um item com quantidade 2
+        Session::put('cart', [7 => 2]); // item com quantidade 2
 
         $request = new Request();
         $response = $this->cartController->decrease(7); // Corrigido para usar o ID correto
@@ -52,7 +51,7 @@ class TestPages extends TestCase
     /** @test */
     public function it_can_remove_item_from_cart()
     {
-        Session::put('cart', [7 => 1]); // Simulando um item no carrinho
+        Session::put('cart', [7 => 1]); // um item no carrinho
 
         $request = new Request();
         $response = $this->cartController->remove(7); // Corrigido para usar o ID correto
@@ -66,7 +65,7 @@ class TestPages extends TestCase
     {
         $response = $this->cartController->checkout(); // Chama o método checkout
 
-        $this->assertEquals(302, $response->getStatusCode()); // Verifica se a resposta é um redirecionamento
+        $this->assertEquals(302, $response->getStatusCode()); 
         $this->assertEquals(route('login'), $response->headers->get('Location')); // Verifica o redirecionamento
         $this->assertEquals('Você precisa estar logado para finalizar a compra!', session('error'));
     }

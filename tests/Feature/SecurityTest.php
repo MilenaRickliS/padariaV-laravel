@@ -18,7 +18,7 @@ class SecurityTest extends TestCase
             'password' => "' OR '1'='1", // Tentativa de injeção SQL
         ]);
 
-        $response->assertSessionHasErrors(); // Verifica se ocorreu um erro
+        $response->assertSessionHasErrors(); 
         $this->assertGuest(); 
     }
 
@@ -37,7 +37,6 @@ class SecurityTest extends TestCase
             'name' => '<script>alert("XSS")</script>',
         ]);
 
-        // Verifica se houve erro ao tentar registrar
         $response->assertSessionHasErrors('name');
     }
 
@@ -51,8 +50,8 @@ class SecurityTest extends TestCase
     /** @test */
     public function test_authenticated_user_can_access_protected_route()
     {
-        $user = User::factory()->create(); // Cria um usuário
-        $this->actingAs($user); // Simula o login do usuário
+        $user = User::factory()->create(); 
+        $this->actingAs($user); 
 
         $response = $this->get('/pedidos');
         $response->assertStatus(200); // Verifica se a página é acessível
