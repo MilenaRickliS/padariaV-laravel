@@ -70,6 +70,8 @@ describe('Interface Tests for PadariaV Laravel', () => {
     cy.get('input[name="email"]').type('test@example.com'); 
     cy.get('input[name="password"]').type('password'); 
     cy.get('button[type="submit"]').click(); 
+    cy.get('a[href="http://localhost:8000/pedidos"]').click(); 
+    
 
     cy.url().should('include', '/pedidos'); // Verifica a URL
     cy.get('h1').should('contain', 'Minhas Compras'); // título correto
