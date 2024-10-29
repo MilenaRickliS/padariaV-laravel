@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -69,5 +70,30 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        // Log the user in after registration
+        Auth::login($user);
+
+        // Verifica se o carrinho está vazio
+        $cart = session()->get('cart', []); // Supondo que o carrinho esteja na sessão
+
+        if (empty($cart)) {
+            return redirect('/'); // Redireciona para a página inicial se o carrinho estiver vazio
+        }
+
+        return redirect()->intended($this->redirectTo); // Redireciona para /cart/checkout se não estiver vazio
     }
 }

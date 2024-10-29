@@ -48,19 +48,26 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
-    
+
         if (Auth::attempt($credentials)) {
             // Adicione um log para verificar o e-mail do usuário
             Log::info('Usuário autenticado: ' . Auth::user()->email);
-    
+
             // Verifica se o usuário é administrador
             if (Auth::user()->email === 'admin@example.com') {
                 return redirect()->intended('/products'); // Redireciona para /products se for admin
             }
-    
-            return redirect()->intended($this->redirectTo); // Redireciona para /cart/checkout se não for admin
+
+            // Aqui você deve verificar se o usuário tem itens no carrinho
+            $cart = session()->get('cart', []); // Supondo que o carrinho esteja armazenado na sessão
+
+            if (empty($cart)) {
+                return redirect('/'); // Redireciona para a página inicial se o carrinho estiver vazio
+            }
+
+            return redirect()->intended($this->redirectTo); // Redireciona para /cart/checkout se não for admin e o carrinho não estiver vazio
         }
-    
+
         return redirect()->back()->withErrors(['email' => 'Email ou senha inválidos']);
     }
 

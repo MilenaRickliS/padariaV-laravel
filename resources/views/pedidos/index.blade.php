@@ -9,6 +9,10 @@
     @if(session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
+
+    @if($pedidos->isEmpty())
+        <div class="alert alert-info">Nenhum pedido feito<i class="bi bi-emoji-frown-fill"></i></div>
+    @else
     <ul class="pedidos">
         @foreach($pedidos as $pedido)
             <li class="pedido">
@@ -42,4 +46,5 @@
             </li>
         @endforeach
     </ul>
+    @endif
 @endsection
