@@ -58,6 +58,7 @@
             <div>
                 <p><i class="bi bi-envelope-fill"></i> panificadora_vitoria@hotmail.com</p>
                 <p><i class="bi bi-telephone-fill"></i> (42) 98413-4953</p>
+                <p>CNPJ 73.920.076/0001-09</p>
             </div>
         </div>
     </footer>
