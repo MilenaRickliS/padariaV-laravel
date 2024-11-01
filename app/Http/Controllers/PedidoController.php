@@ -43,15 +43,16 @@ class PedidoController extends Controller
         }
 
         // Validate address data
-        $request->validate([
-            'rua' => 'required|string|regex:/^[a-zA-Z\s]+$/', // Apenas letras e espaços
+        $validatedData = $request->validate([
+            'rua' => 'required|string|regex:/^[a-zA-Z\sçáàãâéêíóôú´`~]+$/', // Apenas letras, espaços e acentos
             'numero' => 'required|integer', // Apenas números
-            'cep' => 'required|string|regex:/^\d{5}-\d{3}$/', // Formato de CEP com traço 
+            'cep' => 'required|string|regex:/^\d{5}-\d{3}$/', // Formato de CEP com traço (ex: 12345-678)
             'estado' => 'required|string|regex:/^[a-zA-Z\s]+$/', // Apenas letras e espaços
-            'cidade' => 'required|string|regex:/^[a-zA-Z\s]+$/', // Apenas letras e espaços
-            'complemento' => 'nullable|string|regex:/^[a-zA-Z0-9\s]*$/', // Letras e números, opcional
-            'forma_pagamento' => 'required|string', 
+            'cidade' => 'required|string|regex:/^[a-zA-Z\sçáàãâéêíóôú´`~]+$/', // Apenas letras e espaços
+            'complemento' => 'nullable|string|regex:/^[a-zA-Z0-9\s.,-]*$/', // Letras, números, espaços e pontuações, opcional
+            'forma_pagamento' => 'required|string', // Forma de pagamento
         ]);
+
         
         // Calculate total value of the order
         $totalValue = array_sum(array_map(function($id) {

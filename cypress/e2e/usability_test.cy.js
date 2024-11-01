@@ -16,7 +16,7 @@ describe('Usability Tests for PadariaV Laravel', () => {
 
     // Preenche o formulário de registro
     cy.get('input[name="name"]').type('Test User'); 
-    cy.get('input[name="email"]').type('test@example.com'); 
+    cy.get('input[name="email"]').type('test@hotmail.com'); 
     cy.get('input[name="password"]').type('password'); 
     cy.get('input[name="password_confirmation"]').type('password'); 
     cy.get('button[type="submit"]').click(); 
@@ -28,7 +28,7 @@ describe('Usability Tests for PadariaV Laravel', () => {
   it('should load the cart page when authenticated', () => {
     // login do usuário
     cy.visit('http://localhost:8000/login');
-    cy.get('input[name="email"]').type('test@example.com'); 
+    cy.get('input[name="email"]').type('test@hotmail.com'); 
     cy.get('input[name="password"]').type('password'); 
     cy.get('button[type="submit"]').click(); 
     cy.url().should('include', 'http://localhost:8000'); //página inicial
@@ -80,16 +80,14 @@ describe('Usability Tests for PadariaV Laravel', () => {
 
     // login do usuário
     cy.visit('http://localhost:8000/login');
-    cy.get('input[name="email"]').type('test@example.com'); 
+    cy.get('input[name="email"]').type('test@hotmail.com'); 
     cy.get('input[name="password"]').type('password'); 
     cy.get('button[type="submit"]').click(); 
     cy.url().should('include', 'http://localhost:8000/cart/checkout'); 
 
     // Preenche o formulário de checkout
-    cy.get('input[name="rua"]').type('Avenida das Flores'); 
-    cy.get('input[name="numero"]').type('123'); 
-    cy.get('input[name="cep"]').type('12345678'); 
-    cy.get('input[name="cidade"]').type('Cidade Exemplo');
+    cy.get('input[name="cep"]').type('01001-000').type('{enter}');    
+    cy.get('input[name="numero"]').type('1028'); 
     cy.get('input[name="complemento"]').type('Apto 45'); 
     cy.get('select[name="forma_pagamento"]').select('cartao'); 
         

@@ -55,7 +55,7 @@ class RegisterController extends Controller
                 'required', 
                 'string', 
                 'max:255', 
-                'regex:/^[a-zA-Z]+$/', // Apenas letras (a-z)
+                'regex:/^[a-zA-Z\s]+$/', // Apenas letras (a-z)
                 'regex:/^(?!.*[&=_\.\'\-+,\[\]<>])/', // Não permite caracteres especiais
                 'regex:/^(?!.*\.\.)/', // Não permite mais de um ponto final consecutivo
             ],

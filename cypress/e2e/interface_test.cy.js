@@ -49,7 +49,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
     cy.get('.final-carrinho > a').click(); // página de checkout
 
     //login
-    cy.get('input[name="email"]').type('test@example.com'); 
+    cy.get('input[name="email"]').type('test@hotmail.com'); 
     cy.get('input[name="password"]').type('password'); 
     cy.get('button[type="submit"]').click(); 
 
@@ -59,6 +59,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
     cy.get('input[name="numero"]').should('be.visible'); 
     cy.get('input[name="cep"]').should('be.visible'); 
     cy.get('input[name="cidade"]').should('be.visible'); 
+    cy.get('input[name="estado"]').should('be.visible'); 
     cy.get('input[name="complemento"]').should('be.visible'); 
     cy.get('select[name="forma_pagamento"]').should('be.visible'); 
     cy.get('button[type="submit"]').should('contain', 'Finalizar Compra'); 
@@ -67,7 +68,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
   it('should display the orders page correctly', () => {
     cy.get('a[href="http://localhost:8000/pedidos"]').click(); 
     //login
-    cy.get('input[name="email"]').type('test@example.com'); 
+    cy.get('input[name="email"]').type('test@hotmail.com'); 
     cy.get('input[name="password"]').type('password'); 
     cy.get('button[type="submit"]').click(); 
     cy.get('a[href="http://localhost:8000/pedidos"]').click(); 
@@ -95,21 +96,21 @@ describe('Interface Tests for PadariaV Laravel', () => {
     cy.get('a[href="http://localhost:8000/login"]').click();
     cy.url().should('include', '/login');
     
-    cy.get('input[name="email"]').type('test@example.com'); 
+    cy.get('input[name="email"]').type('test@hotmail.com'); 
     cy.get('input[name="password"]').type('password'); 
     cy.get('button[type="submit"]').click(); 
     
     //checkout
     cy.url().should('include', '/cart/checkout');
-    cy.get('input[name="rua"]').type('Rua Exemplo');
-    cy.get('input[name="numero"]').type('123');
-    cy.get('input[name="cep"]').type('12345-678');
-    cy.get('input[name="cidade"]').type('Cidade Exemplo'); 
-    cy.get('input[name="complemento"]').type('Apto 45');        
+    cy.get('input[name="cep"]').type('01001-000').type('{enter}');    
+    cy.get('input[name="numero"]').type('1028'); 
+    cy.get('input[name="complemento"]').type('Apto 45'); 
     cy.get('select[name="forma_pagamento"]').select('cartao'); 
+        
     cy.get('button.button-final').click();
 
     //pedidos
+
     cy.url().should('include', '/pedidos'); 
     cy.get('h1').should('contain', 'Minhas Compras');
     cy.get('.pedido').should('have.length.greaterThan', 0); 
