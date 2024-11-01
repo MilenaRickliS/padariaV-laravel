@@ -19,13 +19,13 @@ class DatabaseIntegrationTest extends TestCase
     {
         $user = User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test@hotmail.com',
         ]);
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test@hotmail.com',
         ]);
     }
 
@@ -71,10 +71,11 @@ class DatabaseIntegrationTest extends TestCase
         $pedido = Pedido::factory()->create();
         $endereco = Endereco::factory()->create([
             'pedido_id' => $pedido->id,
-            'rua' => '123 Test St',
+            'rua' => 'Test St',
             'numero' => '12345',
             'cep' => '12345',
             'cidade' => 'Test City',
+            'estado' => 'Test',
             'complemento' => 'TS',
             'forma_pagamento' => 'pix',
         ]);
@@ -82,10 +83,11 @@ class DatabaseIntegrationTest extends TestCase
         $this->assertDatabaseHas('enderecos', [
             'id' => $endereco->id,
             'pedido_id' => $pedido->id,
-            'rua' => '123 Test St',
+            'rua' => 'Test St',
             'numero' => '12345',
             'cep' => '12345',
             'cidade' => 'Test City',
+            'estado' => 'Test',
             'complemento' => 'TS',
             'forma_pagamento' => 'pix',
         ]);

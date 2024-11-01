@@ -14,7 +14,7 @@ class SecurityTest extends TestCase
     public function test_sql_injection_prevention()
     {
         $response = $this->post('/login', [
-            'email' => 'test@example.com',
+            'email' => 'test@hotmail.com',
             'password' => "' OR '1'='1", // Tentativa de injeção SQL
         ]);
 
@@ -27,7 +27,7 @@ class SecurityTest extends TestCase
     {
         $response = $this->post('/register', [
             'name' => '<script>alert("XSS")</script>',
-            'email' => 'test@example.com',
+            'email' => 'test@hotmail.com',
             'password' => 'password',
             'password_confirmation' => 'password', 
         ]);
