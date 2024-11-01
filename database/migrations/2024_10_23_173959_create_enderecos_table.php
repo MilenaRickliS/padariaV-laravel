@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('numero');
             $table->string('cep');
             $table->string('cidade');
+            $table->string('estado');
             $table->string('complemento')->nullable();
             $table->string('forma_pagamento');
             $table->timestamps();

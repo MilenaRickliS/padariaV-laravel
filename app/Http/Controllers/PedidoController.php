@@ -41,19 +41,30 @@ class PedidoController extends Controller
         if (empty($cart)) {
             return redirect()->back()->with('error', 'Carrinho vazio!');
         }
-    
+
+        // Validate address data
+        $request->validate([
+            'rua' => 'required|string|regex:/^[a-zA-Z\s]+$/', // Apenas letras e espaços
+            'numero' => 'required|integer', // Apenas números
+            'cep' => 'required|string|regex:/^\d{5}-\d{3}$/', // Formato de CEP com traço 
+            'estado' => 'required|string|regex:/^[a-zA-Z\s]+$/', // Apenas letras e espaços
+            'cidade' => 'required|string|regex:/^[a-zA-Z\s]+$/', // Apenas letras e espaços
+            'complemento' => 'nullable|string|regex:/^[a-zA-Z0-9\s]*$/', // Letras e números, opcional
+            'forma_pagamento' => 'required|string', 
+        ]);
+        
         // Calculate total value of the order
         $totalValue = array_sum(array_map(function($id) {
             $product = \App\Models\Product::find($id);
             return $product ? $product->price * FacadesSession::get('cart')[$id] : 0;
         }, array_keys($cart)));
-    
+        
         // Create the order
         $pedido = new Pedido();
         $pedido->valor = $totalValue;
         $pedido->user_id = Auth::user()->id;
         $pedido->save();
-    
+        
         // Save items in the order
         foreach ($cart as $id => $quantity) {
             $pedido->itens()->create([
@@ -61,7 +72,7 @@ class PedidoController extends Controller
                 'quantidade' => $quantity
             ]);
         }
-    
+        
         // Save address information
         $endereco = new Endereco();
         $endereco->pedido_id = $pedido->id;
@@ -69,13 +80,14 @@ class PedidoController extends Controller
         $endereco->numero = $request->numero;
         $endereco->cep = $request->cep;
         $endereco->cidade = $request->cidade;
+        $endereco->estado = $request->estado;
         $endereco->complemento = $request->complemento;
         $endereco->forma_pagamento = $request->forma_pagamento;
         $endereco->save();
-    
+        
         // Clear the cart after saving the order
         FacadesSession::forget('cart');
-    
+        
         // Redirect to the pedidos index page
         return redirect()->route('pedidos.index')->with('success', 'Pedido realizado com sucesso!');
     }

@@ -31,30 +31,43 @@
                         <tr>
                             <td>{{ $product->name }}</td>
                             <td>{{ $quantity }}</td>
-                            <td>R$ {{ $product->price }}</td>
+                            <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <br><br>
             <p class="titulo-finalizar">Adicionar Endereço e Pagamento</p>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         <form class="form-finalizar" action="{{ url('/pedidos') }}" method="POST">
             @csrf
             <div>
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" required placeholder="xxxxx-xxx" onblur="buscarEndereco()">
+            </div>
+            <div>
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" required placeholder="Cidade">
+            </div>
+            <div>
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" required placeholder="Estado" >
+            </div>
+            <div>
                 <label for="rua">Rua:</label>
-                <input type="text" name="rua" required placeholder="Avenida/Rua">
+                <input type="text" id="rua" name="rua" required placeholder="Avenida/Rua">
             </div>
             <div>
                 <label for="numero">Número:</label>
                 <input type="text" name="numero" required placeholder="123">
-            </div>
-            <div>
-                <label for="cep">CEP:</label>
-                <input type="text" name="cep" required placeholder="xxxxxxxx">
-            </div>
-            <div>
-                <label for="cidade">Cidade:</label>
-                <input type="text" name="cidade" required placeholder="Cidade">
             </div>
             <div>
                 <label for="complemento">Complemento:</label>
@@ -81,4 +94,37 @@
         <a href="{{ url('/login') }}">Login</a>
     @endif
     </div>
+
+    <script>
+        function buscarEndereco() {
+            var cep = document.getElementById('cep').value.replace(/\D/g, '');
+
+            if (cep.length === 8) {
+                var url = 'https://viacep.com.br/ws/' + cep + '/json/';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        // Preencher os campos com os dados retornados pela API
+                        document.getElementById('rua').value = data.logradouro;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('estado').value = data.uf;
+                        
+                    
+                    } else {
+                        alert('CEP não encontrado.');
+                        document.getElementById('rua').value = '';
+                        document.getElementById('cidade').value = '';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar o CEP:', error);
+                    alert('Erro ao buscar o CEP. Tente novamente mais tarde.');
+                });
+            } else {
+                alert('CEP inválido. Deve conter 8 dígitos.');
+            }
+}
+</script>
 @endsection
