@@ -9,7 +9,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class TestPages extends TestCase
+class PagesTest extends TestCase
 {
     use RefreshDatabase; 
 
