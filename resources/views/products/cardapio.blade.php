@@ -3,8 +3,8 @@
 @section('content')
 
 <h1>Cardápio</h1>
-@if (session('item_added'))
-    <a href="{{ url('/cart') }}" class=" ver shake"><i class="bi bi-cart-fill"></i> Ver Carrinho</a>
+@if (session()->has('cart') && count(session('cart')) > 0)
+    <a href="{{ url('/cart') }}" class="ver shake"><i class="bi bi-cart-fill"></i> Ver Carrinho</a>
 @endif
 <div class="cardapio">
     @foreach ($products as $product)
