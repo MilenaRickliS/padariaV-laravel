@@ -51,6 +51,19 @@ class PedidoController extends Controller
             'cidade' => 'required|string|regex:/^[a-zA-Z\sçáàãâéêíóôú´`~]+$/', // Apenas letras e espaços
             'complemento' => 'nullable|string|regex:/^[a-zA-Z0-9\s.,-]*$/', // Letras, números, espaços e pontuações, opcional
             'forma_pagamento' => 'required|string', // Forma de pagamento
+        ], [
+            'rua.required' => 'O campo Rua é obrigatório.',
+            'rua.regex' => 'A Rua deve conter apenas letras e espaços.',
+            'numero.required' => 'O campo Número é obrigatório.',
+            'numero.integer' => 'O Número deve ser um valor numérico.',
+            'cep.required' => 'O campo CEP é obrigatório.',
+            'cep.regex' => 'O CEP deve estar no formato 00000-000.',
+            'estado.required' => 'O campo Estado é obrigatório.',
+            'estado.regex' => 'O Estado deve conter apenas letras e espaços.',
+            'cidade.required' => 'O campo Cidade é obrigatório.',
+            'cidade.regex' => 'A Cidade deve conter apenas letras e espaços.',
+            'complemento.regex' => 'O Complemento deve conter apenas letras, números, espaços e pontuações permitidas.',
+            'forma_pagamento.required' => 'A Forma de Pagamento é obrigatória.',
         ]);
 
         

@@ -38,40 +38,56 @@
             </table>
             <br><br>
             <p class="titulo-finalizar">Adicionar Endereço e Pagamento</p>
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            
         <form class="form-finalizar" action="{{ url('/pedidos') }}" method="POST">
             @csrf
             <div>
                 <label for="cep">CEP:</label>
                 <input type="text" id="cep" name="cep" required placeholder="00000-000" onblur="buscarEndereco()">
+                <br>
+                @error('cep')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="cidade">Cidade:</label>
                 <input type="text" id="cidade" name="cidade" required placeholder="Cidade">
+                <br>
+                @error('cidade')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="estado">Estado:</label>
                 <input type="text" id="estado" name="estado" required placeholder="Estado" >
+                <br>
+                @error('estado')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="rua">Rua:</label>
                 <input type="text" id="rua" name="rua" required placeholder="Avenida/Rua">
+                <br>
+                @error('rua')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="numero">Número:</label>
                 <input type="text" name="numero" required placeholder="123">
+                <br>
+                @error('numero')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="complemento">Complemento:</label>
                 <input type="text" name="complemento" placeholder="Complemento">
+                <br>
+                @error('complemento')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="forma_pagamento">Forma de Pagamento:</label>
@@ -82,6 +98,10 @@
                     <option value="dinheiro">Dinheiro</option>
                     <option value="voucher">Voucher</option>
                 </select>
+                <br>
+                @error('forma_pagamento')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             <button class="button-final" type="submit">Finalizar Compra</button>
         </form>

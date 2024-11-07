@@ -55,7 +55,7 @@ class RegisterController extends Controller
                 'required', 
                 'string', 
                 'max:255', 
-                'regex:/^[a-zA-Z\s]+$/', // Apenas letras (a-z)
+                'regex:/^[a-zA-Z\sçáàãâéêíóôú´`~]+$/', // Apenas letras (a-z)
                 'regex:/^(?!.*[&=_\.\'\-+,\[\]<>])/', // Não permite caracteres especiais
                 'regex:/^(?!.*\.\.)/', // Não permite mais de um ponto final consecutivo
             ],
@@ -73,6 +73,13 @@ class RegisterController extends Controller
                 'min:8', 
                 'confirmed',
             ],
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.regex' => 'O nome deve conter apenas letras e espaços.',
+            'email.required' => 'O campo email é obrigatório.',
+            'email.email' => 'O email deve ser um endereço de email válido.',
+            'email.regex' => 'O email deve ser de um dos domínios permitidos: gmail.com, hotmail.com, outlook.com, live.com, yahoo.com.',
+            'email.unique' => 'Este email já está em uso.',
         ]);
     }
 
