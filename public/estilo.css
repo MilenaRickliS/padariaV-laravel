@@ -320,8 +320,7 @@ th, td{
 /* footer */
 .footer-flex{
     display: flex;
-    margin: 200px auto;
-    
+    margin: 200px auto;    
     justify-content: center;
     align-items: center;
 }
@@ -346,6 +345,18 @@ th, td{
     font-weight: bold;
     color: #ffffff;
 }
+
+@media screen and (max-width: 1075px) {
+    .footer-flex{
+        flex-direction: column;
+        
+    }
+    .footer-info{
+        width: 50%;
+    }
+    
+  }
+
 
 /* products admin */
 .voltar{

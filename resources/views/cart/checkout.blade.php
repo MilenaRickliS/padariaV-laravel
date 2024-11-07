@@ -51,7 +51,7 @@
             @csrf
             <div>
                 <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" required placeholder="xxxxx-xxx" onblur="buscarEndereco()">
+                <input type="text" id="cep" name="cep" required placeholder="00000-000" onblur="buscarEndereco()">
             </div>
             <div>
                 <label for="cidade">Cidade:</label>

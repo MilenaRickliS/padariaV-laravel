@@ -79,6 +79,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+        $request->session()->forget('cart');
         Auth::logout();
         return redirect()->route('login');
     }
