@@ -4,6 +4,22 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
+.navbar {
+    background-color: #1b1b1b;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #c59700;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='white' class='bi bi-list' viewBox='0 0 16 16'%3e%3cpath fill-rule='evenodd' d='M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z'/%3e%3c/svg%3e");
+}
 
 ul{
     display: flex;
@@ -32,7 +48,7 @@ a:hover{
 .logout{
     
     /* background-color: #FFC857; */
-    color: #000000;
+    color: #fff;
     font-weight: bold;
     transition: .5s;
     
