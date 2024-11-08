@@ -5,7 +5,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
   });
 
   it('should display the menu page correctly', () => {
-    cy.get('a[href="http://localhost:8000"]').click(); 
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true });; 
     cy.url().should('include', 'http://localhost:8000'); // Verifica a URL
     cy.get('h1').should('contain', 'Cardápio'); // título correto
     cy.get('.cardapio').should('be.visible'); // seção visível
@@ -13,7 +13,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
   });
 
   it('should display the cart page correctly', () => {
-    cy.get('a[href="http://localhost:8000"]').click(); 
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true });; 
     cy.get('.cardapio > :nth-child(1)').first().find('button.add').contains('Adicionar ao Carrinho').click(); // adicionar ao carrinho - primeiro item
     cy.get('a[href="http://localhost:8000/cart"]').click(); 
     cy.url().should('include', '/cart'); // Verifica a URL
@@ -24,7 +24,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
   });
 
   it('should display the login page correctly', () => {
-    cy.get('a[href="http://localhost:8000/login"]').click(); 
+    cy.get('a[href="http://localhost:8000/login"]').click({ multiple: true });; 
     cy.url().should('include', '/login'); // Verifica a URL
     cy.get('div').should('contain', 'Login'); // título correto
     cy.get('input[name="email"]').should('be.visible'); //campos visíveis
@@ -33,7 +33,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
   });
 
   it('should display the registration page correctly', () => {
-    cy.get('a[href="http://localhost:8000/register"]').click();
+    cy.get('a[href="http://localhost:8000/register"]').click({ multiple: true });;
     cy.url().should('include', '/register'); // Verifica a URL
     cy.get('div').should('contain', 'Register'); //título correto
     cy.get('input[name="name"]').should('be.visible'); //campos visíveis
@@ -43,7 +43,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
   });
 
   it('should display the checkout page correctly', () => {
-    cy.get('a[href="http://localhost:8000"]').click(); 
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true });; 
     cy.get('.cardapio > :nth-child(1)').first().find('button.add').contains('Adicionar ao Carrinho').click(); // adicionar ao carrinho - primeiro item
     cy.get('a[href="http://localhost:8000/cart"]').click(); 
     cy.get('.final-carrinho > a').click(); // página de checkout
@@ -82,7 +82,7 @@ describe('Interface Tests for PadariaV Laravel', () => {
 
   // fluxo completo
   it('should allow user to complete a purchase flow', () => {
-    cy.get('a[href="http://localhost:8000"]').click(); 
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true });; 
     cy.get('.cardapio > :nth-child(1)').first().find('button.add').contains('Adicionar ao Carrinho').click();
     
     // Acessa o carrinho

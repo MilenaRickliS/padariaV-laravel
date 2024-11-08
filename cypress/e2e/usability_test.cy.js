@@ -5,7 +5,7 @@ describe('Usability Tests for PadariaV Laravel', () => {
   });
 
   it('should load the menu page correctly', () => {
-    cy.get('a[href="http://localhost:8000"]').click(); // página de cardápio
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true }); // página de cardápio
     cy.url().should('include', 'http://localhost:8000'); // URL correta
     cy.get('h1').should('contain', 'Cardápio'); // título correto
   });
@@ -37,7 +37,7 @@ describe('Usability Tests for PadariaV Laravel', () => {
   });
 
   it('should allow user to add items to the cart', () => {
-    cy.get('a[href="http://localhost:8000"]').click(); // cardápio
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true }); // cardápio
     cy.get('.cardapio > :nth-child(1)').first().find('button.add').contains('Adicionar ao Carrinho').click(); // adicionar ao carrinho - primeiro item
     cy.get('a[href="http://localhost:8000/cart"]').click(); 
     cy.get('tbody > tr > :nth-child(1)').should('have.length', 1); 
@@ -45,7 +45,7 @@ describe('Usability Tests for PadariaV Laravel', () => {
   
   it('should allow user to decrease item quantity in the cart', () => {
     
-    cy.get('a[href="http://localhost:8000"]').click(); // cardápio
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true }); // cardápio
     cy.get('.cardapio > :nth-child(1)').first().find('button.add').contains('Adicionar ao Carrinho').click(); // adicionar ao carrinho - primeiro item
     cy.get('a[href="http://localhost:8000/cart"]').click(); 
 
@@ -60,7 +60,7 @@ describe('Usability Tests for PadariaV Laravel', () => {
 
   it('should allow user to remove item from the cart', () => {
     
-    cy.get('a[href="http://localhost:8000"]').click(); // cardápio
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true });// cardápio
     cy.get('.cardapio > .p').first().find('button.add').contains('Adicionar ao Carrinho').click(); //adicionar ao carrinho - primeiro item
     cy.get('a[href="http://localhost:8000/cart"]').click(); 
 
@@ -72,7 +72,7 @@ describe('Usability Tests for PadariaV Laravel', () => {
   //caminho completo
   it('should complete the purchase', () => {    
 
-    cy.get('a[href="http://localhost:8000"]').click();
+    cy.get('a[href="http://localhost:8000"]').click({ multiple: true });
     cy.get('.cardapio > :nth-child(1)').first().find('button.add').contains('Adicionar ao Carrinho').click(); //adicionar ao carrinho - primeiro item
     cy.get('a[href="http://localhost:8000/cart"]').click(); 
     cy.get('tbody > tr > :nth-child(1)').should('have.length', 1); 

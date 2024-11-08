@@ -80,6 +80,9 @@ class RegisterController extends Controller
             'email.email' => 'O email deve ser um endereço de email válido.',
             'email.regex' => 'O email deve ser de um dos domínios permitidos: gmail.com, hotmail.com, outlook.com, live.com, yahoo.com.',
             'email.unique' => 'Este email já está em uso.',
+            'password.min' => 'A senha precisa ter no mínimo 8 caracteres',
+            'password.confirmed' => 'Confirmação de senha diferente, por favor verifique sua senha novamente.',
+            'password.required' => 'O campo password é obrigatório.',
         ]);
     }
 

@@ -51,6 +51,7 @@ class ExampleTest extends TestCase
 
         $response = $this->get('/cart/checkout');
         $response->assertStatus(500);
+        
     }
 
     /** @test */
