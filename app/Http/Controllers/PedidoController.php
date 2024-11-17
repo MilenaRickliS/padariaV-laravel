@@ -57,7 +57,7 @@ class PedidoController extends Controller
             'numero.required' => 'O campo Número é obrigatório.',
             'numero.integer' => 'O Número deve ser um valor numérico.',
             'cep.required' => 'O campo CEP é obrigatório.',
-            'cep.regex' => 'O CEP deve estar no formato 00000-000.',
+            'cep.regex' => 'O CEP deve estar no formato 00000-000 (valor numérico).',
             'estado.required' => 'O campo Estado é obrigatório.',
             'estado.regex' => 'O Estado deve conter apenas letras e espaços.',
             'cidade.required' => 'O campo Cidade é obrigatório.',
