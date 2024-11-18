@@ -18,6 +18,6 @@ class Pedido extends Model
     }
     public function endereco()
     {
-        return $this->hasOne(Endereco::class); // Adicione esta linha
+        return $this->hasOne(Endereco::class); 
     }
 }
