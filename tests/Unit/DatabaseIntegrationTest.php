@@ -92,4 +92,5 @@ class DatabaseIntegrationTest extends TestCase
             'forma_pagamento' => 'pix',
         ]);
     }
+
 }

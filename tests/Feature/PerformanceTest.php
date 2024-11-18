@@ -7,7 +7,17 @@ use App\Models\User;
 
 class PerformanceTest extends TestCase
 {
+
     /** @test */
+    public function test_homepage_response_time()
+    {
+        $start = microtime(true);
+        $response = $this->get('/');
+        $end = microtime(true);
+        
+        $this->assertLessThan(1, $end - $start); // Verifica se o tempo de resposta é menor que 1 segundo
+    }
+    
     public function test_cart_page_load_time()
     {
         $startTime = microtime(true);

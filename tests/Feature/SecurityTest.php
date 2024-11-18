@@ -40,7 +40,7 @@ class SecurityTest extends TestCase
         $response->assertSessionHasErrors('name');
     }
 
-    /** @test */
+    
     public function test_protected_route_requires_authentication()
     {
         $response = $this->get('/pedidos');
