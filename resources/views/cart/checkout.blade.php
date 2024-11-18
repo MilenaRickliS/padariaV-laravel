@@ -43,7 +43,7 @@
             @csrf
             <div>
                 <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" required placeholder="00000-000" onblur="buscarEndereco()" maxlength="10">
+                <input type="text" id="cep" name="cep" required placeholder="00000-000" oninput="formatarCep(this)" onblur="buscarEndereco()" maxlength="10">
                 <br>
                 @error('cep')
                     <span class="text-danger">{{ $message }}</span>
@@ -116,6 +116,16 @@
     </div>
 
     <script>
+        function formatarCep(input) {
+            let valor = input.value.replace(/\D/g, '');
+
+            
+            if (valor.length > 5) {
+                valor = valor.substring(0, 5) + '-' + valor.substring(5);
+            }
+
+            input.value = valor;
+        }
         function buscarEndereco() {
             var cep = document.getElementById('cep').value.replace(/\D/g, '');
 
