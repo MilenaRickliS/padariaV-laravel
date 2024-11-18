@@ -352,7 +352,7 @@ th, td{
     padding: 20px;
     color: #000000;
     background-color: #fff;
-    background-image: url(./fundo-blur\ \(1\).png);
+    width: 20%;
 }
 .footer-flex2{
     display: flex;
