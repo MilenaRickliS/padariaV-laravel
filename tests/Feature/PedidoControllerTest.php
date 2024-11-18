@@ -14,7 +14,9 @@ class PedidoControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    
+    /**
+ * @test
+ */
     public function it_creates_a_order_with_valid_data()
     {
         
@@ -48,7 +50,9 @@ class PedidoControllerTest extends TestCase
         $response->assertSessionHas('success', 'Pedido realizado com sucesso!');
     }
 
-    
+    /**
+ * @test
+ */
     public function it_fails_to_create_order_with_empty_cart()
     {
         
@@ -70,7 +74,9 @@ class PedidoControllerTest extends TestCase
         $response->assertRedirect()->withErrors(['error' => 'Carrinho vazio!']);
     }
 
-    
+    /**
+ * @test
+ */
     public function it_fails_to_create_order_with_invalid_address_data()
     {
         

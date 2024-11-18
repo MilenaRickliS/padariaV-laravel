@@ -11,7 +11,9 @@ class RegisterControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    
+    /**
+ * @test
+ */
     public function it_registers_a_user_with_valid_data()
     {
         $response = $this->post('/register', [
@@ -30,7 +32,9 @@ class RegisterControllerTest extends TestCase
         $response->assertRedirect('/');
     }
 
-    
+    /**
+ * @test
+ */
     public function it_fails_to_register_a_user_with_invalid_email()
     {
         $response = $this->post('/register', [
@@ -49,7 +53,9 @@ class RegisterControllerTest extends TestCase
         $response->assertSessionHasErrors('email');
     }
 
-    
+    /**
+ * @test
+ */
     public function it_fails_to_register_a_user_with_short_password()
     {
         $response = $this->post('/register', [
@@ -68,7 +74,9 @@ class RegisterControllerTest extends TestCase
         $response->assertSessionHasErrors('password');
     }
 
-    
+    /**
+ * @test
+ */
     public function it_fails_to_register_a_user_with_mismatched_password_confirmation()
     {
         $response = $this->post('/register', [
@@ -87,7 +95,9 @@ class RegisterControllerTest extends TestCase
         $response->assertSessionHasErrors('password');
     }
 
-    
+    /**
+ * @test
+ */
     public function it_fails_to_register_a_user_with_invalid_name()
     {
         $response = $this->post('/register', [
