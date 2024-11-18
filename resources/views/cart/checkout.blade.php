@@ -43,7 +43,7 @@
             @csrf
             <div>
                 <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" required placeholder="00000-000" onblur="buscarEndereco()">
+                <input type="text" id="cep" name="cep" required placeholder="00000-000" onblur="buscarEndereco()" maxlength="10">
                 <br>
                 @error('cep')
                     <span class="text-danger">{{ $message }}</span>
@@ -75,7 +75,7 @@
             </div>
             <div>
                 <label for="numero">Número:</label>
-                <input type="text" name="numero" required placeholder="123">
+                <input type="text" name="numero" required placeholder="123" maxlength="7">
                 <br>
                 @error('numero')
                     <span class="text-danger">{{ $message }}</span>
